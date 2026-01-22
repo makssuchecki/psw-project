@@ -1,8 +1,8 @@
-const WebSocket = require("ws");
+import WebSocket, { WebSocketServer } from "ws"
 
 function startWebSocket(httpServer){
     const wss = new WebSocket.Server({
-        server,
+        server: httpServer,
         path: "/ws"
     });
 
@@ -18,7 +18,6 @@ function startWebSocket(httpServer){
             console.log("WS client disconnected")
         });
         
-        console.log("WebSocket available at /ws")
     })
 }
 
