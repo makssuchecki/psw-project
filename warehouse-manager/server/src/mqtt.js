@@ -20,4 +20,4 @@ client.on("error", (err) => {
     console.error("MQTT error", err);
 })
 
-module.exports = client;
+export default client;

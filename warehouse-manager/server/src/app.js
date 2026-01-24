@@ -1,14 +1,20 @@
 import express from "express";
 
-const express = require("express")
+// import vehiclesRoutes from "./routes/vehicles.routes.js"
+import packagesRoutes from "./routes/packages.routes.js"
+// import sensorsRoutes from "./routes/sensors.routes.js"
+// import alertsRoutes from "./routes/vehicles.routes.js"
+
+
 
 const app = express()
+
 app.use(express.json())
 
-app.use("/vehicles", require("./routes/vehicles.routes"))
-app.use("/packages", require("./routes/vehicles.routes"))
-app.use("/sensors", require("./routes/vehicles.routes"))
-app.use("/alerts", require("./routes/vehicles.routes"))
+// app.use("/vehicles", vehiclesRoutes)
+app.use("/packages", packagesRoutes)
+// app.use("/sensors", sensorsRoutes)
+// app.use("/alerts", alertsRoutes)
 
 
 export default app;

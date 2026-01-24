@@ -22,4 +22,4 @@ function startWebSocket(httpServer){
 }
 
 
-module.exports = { startWebSocket };
+export default startWebSocket;

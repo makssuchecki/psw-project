@@ -1,12 +1,12 @@
-require("dotenv").config({ path: "../.env"});
+import "dotenv/config";
+import "./mqtt.js";
 
-require("./mqtt")
-
-const express = require("express")
-const http = require("http")
-const { startWebSocket } = require("./ws")
+import express from "express";
+import http from "http"
+import { startWebSocket } from "./ws.js"
 
 const app = express()
+app.use(express.json())
 
 app.get("/health", (req, res) => {
     res.status(200).json({
@@ -17,8 +17,9 @@ app.get("/health", (req, res) => {
 
 const server = http.createServer(app);
 
+startWebSocket(server);
+
 server.listen(3000, () => {
     console.log("HTTP running on 3000")
 });
 
-startWebSocket(server);
