@@ -1,5 +1,5 @@
-import * as controller from "../controllers/packages.controller.js"
-import { Router } from "express"
+import * as controller from "../controllers/packages.controller.js";
+import { Router } from "express";
 
 
 const router = Router()

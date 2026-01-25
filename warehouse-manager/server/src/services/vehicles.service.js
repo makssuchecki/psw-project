@@ -5,7 +5,7 @@ export const getAll = (search) => {
 
     if (search) {
         data = data.filter(v => 
-            v.code.toLowerCase().includes(search.toLowerCase())
+            v.plate.toLowerCase().includes(search.toLowerCase())
         )
     }
 

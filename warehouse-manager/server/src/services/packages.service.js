@@ -14,7 +14,6 @@ export const getAll = (search) => {
 
 export const getById = (id) => model.getById(id)
 
-
 export const create = (pack) => model.create(pack)
 
 export const update = (id, data) => model.update(id, data)
