@@ -1,4 +1,7 @@
-let packages = []
+const packages = [
+    { "id": 1, "code": "paczka1", "vehicleId": "a-1", "status": "in transit", "targetTempRange": "0-30"},
+    { "id": 2, "code": "paczka2", "vehicleId": "a-1", "status": "delivered", "targetTempRange": "0-30"}
+]
 let nextId = 1
 
 export const getAll = () => packages
@@ -29,3 +32,11 @@ export const remove = (id) => {
     packages.splice(idx, 1)
     return true
 }
+
+// packages {
+// id: int
+// code: str
+// vehicleId: str	
+// status: str
+// targetTempRange: str
+// }

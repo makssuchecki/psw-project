@@ -1,4 +1,4 @@
-import * as controller from "../controllers/sensors.controller.js"
+import * as controller from "../controllers/alerts.controller.js"
 import { Router } from "express"
 
 const router = Router()
