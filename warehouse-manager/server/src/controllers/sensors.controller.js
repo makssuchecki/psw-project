@@ -18,7 +18,7 @@ export const create = (req, res) => {
 
 export const update = (req, res) => {
     const sensor = service.update(Number(req.params.id))
-    if (!ok) return res.sendStatus(404)
+    if (!sensor) return res.sendStatus(404)
     res.json(sensor)
 }
 
@@ -26,4 +26,22 @@ export const remove = (req, res) => {
     const ok = service.remove(Number(req.params.id))
     if (!ok) return res.sendStatus(404)
     res.sendStatus(204)
+}
+
+export const getTemperature = (req, res) => {
+    const temp = service.getTemperature()
+
+    if (!temp) {
+        return res.status(204).send()
+    }
+    res.json(temp)
+}
+
+export const getHumidity = (req, res) => {
+    const humidity = service.getHumidity()
+
+    if (!humidity) {
+        return res.status(204).send()
+    }
+    res.json(humidity)
 }
