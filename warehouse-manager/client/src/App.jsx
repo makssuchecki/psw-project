@@ -1,60 +1,49 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 
 const API = "http://localhost:3000"
 
-export default function App(){
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [token, setToken] = useState(null)
-  const [packages, setPackages] = useState([])
-  const [error, setError] = useState("")
-  const login = async() => {
-    const res = await fetch (`${API}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
-    })
-    if (!res.ok) {
-      setError("Nieprawidłowy login lub hasło")
-    }else{
-      setError("")
+export default function App() {
+    const [token, setToken] = useState(null);
+
+    const logout = async () => {
+        try{
+            await fetch(`${API}/auth/logout`, {
+            method: "POST",
+            headers: { Authorization: token }
+        })}catch(e){}
+
+        setToken(null)
     }
-    const data = await res.json()
-    setToken(data.token)
-  }
 
-  const loadPackages = async () => {
-     const res = await fetch(`${API}/packages`, {
-      headers: { Authorization: token }
-     })
-     setPackages(await res.json())
-  }
 
-  return (
-    <div>
+    return (
+        <BrowserRouter>
+            <Routes>
 
-      <h2>Login</h2>
-      <input
-        placeholder="username"
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      {error && (<p>{error}</p>)}
-      <button onClick={login}>Login</button>
+                <Route
+                    path="/login"
+                    element={!token ? <Login setToken={setToken} api={API} /> : <Navigate to="/dashboard" />}
+                />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute token={token}>
+                            <Dashboard token={token} logout={logout} api={API}/>        
+                        </ProtectedRoute>
+                    }
+                />
 
-      <hr />
+                <Route
+                    path="/"
+                    element={!token ? <Navigate to="/login"/> : <Navigate to="/dashboard" />}
+                />
 
-      <button onClick={loadPackages} disabled={!token}>
-        Pobierz paczki
-      </button>
-
-      <pre>{JSON.stringify(packages, null, 2)}</pre>
-    </div>
-  )
+                <Route path="*" element={<Navigate to={token ? "/dashboard" : "/login"} replace/>}/>
+            </Routes>
+        </BrowserRouter>
+    )
 }
