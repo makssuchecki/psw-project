@@ -1,38 +1,43 @@
 import * as model from "../models/sensors.model.js"
 import client from "../mqtt/client.js"
 
-let tempMeasurements = [{"value": "20", "unit": "C", "timestamp": new Date()}]
-let humidityMeasurements = [{"value": "70", "unit": "%", "timestamp": new Date()}]
+let broadcast = () => {}
+export const setBroadcast = (fn) => {
+    broadcast = typeof fn === "function" ? fn : () => {};
+}
+let tempMeasurements = [{"type": "sensor.temperature", "value": "20", "unit": "C", "timestamp": new Date()}]
+let humidityMeasurements = [{"type": "sensor.humidity","value": "70", "unit": "%", "timestamp": new Date()}]
 
 client.on("message", (topic, message) => {
     const data = JSON.parse(message.toString())
     
     if (topic === "sensors/temperature"){
         const value = Number(data.value)
-        tempMeasurements.push({
+        const tempData = {
+            type: "sensor.temperature",
             value: value,
             unit: "C",
             timestamp: new Date()
-        })
-        
-        if (tempMeasurements.length > 100){
-            tempMeasurements.shift()
         }
-        console.log("New temperature measurement: ", data)
+        
+        tempMeasurements.push(tempData)
+        if (tempMeasurements.length > 100) tempMeasurements.shift()
+        
+        broadcast(tempData)
     }
     
     if (topic === "sensors/humidity"){
-        
-        humidityMeasurements.push({
+        const humData = {
+            type: "sensor.humidity",
             value: data.value,
             unit: "%",
             timestamp: new Date()
-        })
-        
-        if (humidityMeasurements.length > 100){
-            humidityMeasurements.shift()
         }
-        console.log("New humidity measurement: ", data)
+        humidityMeasurements.push(humData)
+        
+        if (humidityMeasurements.length > 100) humidityMeasurements.shift()
+
+        broadcast(humData)
     }
 })
 
