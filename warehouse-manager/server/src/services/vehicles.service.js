@@ -1,4 +1,15 @@
 import * as model from "../models/vehicles.model.js"
+import client from "../mqtt/client.js"
+
+
+client.on("message", (topic, message) => {
+    const data = JSON.parse(message.toString())
+
+    if (topic === "vehicles/location"){
+        const { longitude, latitude, vehicleId } = data
+        update(vehicleId, {lastgps: [longitude, latitude]})
+    }
+})
 
 export const getAll = (search) => {
     let data = model.getAll()
@@ -8,7 +19,7 @@ export const getAll = (search) => {
             v.plate.toLowerCase().includes(search.toLowerCase())
         )
     }
-
+    
     return data
 }
 

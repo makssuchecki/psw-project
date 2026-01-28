@@ -5,14 +5,15 @@ export default function SensorsLive() {
 
     return (
         <div>
+            <h2>Czujniki</h2>
             <p>Status: {connected ? "connected" : "disconnected"}</p>
 
             {lastMsg?.type === "sensor.temperature" && (
-                <p>Temperature: {lastMsg.value} {lastMsg.unit}</p>
+                <p>Temperatura: {lastMsg.value} {lastMsg.unit}</p>
             )}
             
             {lastMsg?.type === "sensor.humidity" && (
-                <p>Humidity: {lastMsg.value} {lastMsg.unit}</p>
+                <p>Wilgotność: {lastMsg.value} {lastMsg.unit}</p>
             )}
 
         </div>

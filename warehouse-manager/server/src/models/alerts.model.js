@@ -1,5 +1,6 @@
+import crypto from "crypto";
 const alerts = []
-let nextId = 1
+
 
 export const getAll = () => alerts
 
@@ -8,7 +9,7 @@ export const getById = (id) => {
 }
 
 export const create = (alertData) => {
-    const newAlert = { id: nextId++, ...alertData }
+    const newAlert = { id: crypto.randomUUID(), ...alertData }
     alerts.push(newAlert)
     return newAlert
 }

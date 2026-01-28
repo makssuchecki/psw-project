@@ -1,5 +1,6 @@
 import * as model from "../models/sensors.model.js"
 import client from "../mqtt/client.js"
+import { createOverheatAlert } from "./alerts.service.js"
 
 let broadcast = () => {}
 export const setBroadcast = (fn) => {
@@ -22,7 +23,9 @@ client.on("message", (topic, message) => {
         
         tempMeasurements.push(tempData)
         if (tempMeasurements.length > 100) tempMeasurements.shift()
-        
+
+        if (tempData.value > 30) createOverheatAlert()
+
         broadcast(tempData)
     }
     

@@ -23,9 +23,5 @@ app.use("/packages", packagesRoutes);
 app.use("/sensors", sensorsRoutes);
 app.use("/alerts", alertsRoutes);
 
-app.get("/health", (req, res) => {
-    res.status(200).json({ status: "ok", timestamp: Date.now() });
-});
-
 
 export default app;

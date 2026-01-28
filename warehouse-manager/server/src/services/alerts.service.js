@@ -1,4 +1,5 @@
 import * as model from "../models/alerts.model.js"
+import crypto from "crypto"
 
 export const getAll = (search) => {
     let data = model.getAll()
@@ -18,3 +19,16 @@ export const create = (alert) => model.create(alert)
 export const update = (id, data) => model.update(id, data) 
 
 export const remove = (id) => model.remove(id)
+
+export const createOverheatAlert = () => {
+    const alert = {
+        id: crypto.randomUUID(),
+        type: "overheat",
+        severity: "high",
+        message: "temperature over 30",
+        createAt: new Date()
+    }
+    create(alert)
+}
+
+

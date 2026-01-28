@@ -6,6 +6,8 @@ client.on("connect", () => {
     console.log("MQTT connected")
     client.subscribe("sensors/temperature")
     client.subscribe("sensors/humidity")
+    client.subscribe("vehicles/location")
+    client.subscribe("packages/status")
 })
 
 client.on("error", err => {
