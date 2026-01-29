@@ -8,4 +8,4 @@ setInterval(() => {
         "sensors/humidity", 
         JSON.stringify({ value })
     )
-}, 3000)
+}, 5000)

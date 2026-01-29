@@ -1,3 +1,5 @@
+import crypto from "crypto";
+
 export const vehicles = [{"id": 1, "plate": "GD00000", "driver": "Jan Kowalski", "status":"active", "lastgps": [54.0, 18.0]}]
 
 export const getAll = () => vehicles
@@ -7,7 +9,7 @@ export const getById = (id) => {
 }
 
 export const create = (vehicle) => {
-    const newVehicle = { id: nextId++, ...vehicle }
+    const newVehicle = { id: crypto.randomUUID(), ...vehicle }
     vehicles.push(newVehicle)
     return newVehicle
 }

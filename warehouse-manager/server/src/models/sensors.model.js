@@ -1,4 +1,8 @@
-export const sensors = []
+import crypto from "crypto";
+
+export const sensors = [{"id": 1, "type": "thermometer", "assigneTo": "warehouse"},
+{"id": 2, "type": "hygrometer", "assigneTo": "warehouse"},
+{"id": 3, "type": "gps", "assignedTo": "vehicle-1"}]
 
 export const getAll = () => sensors
 
@@ -7,7 +11,7 @@ export const getById = (id) => {
 }
 
 export const create = (sensor) => {
-    const newSensor = { id: nextId++, ...sensor }
+    const newSensor = { id: crypto.randomUUID(), ...sensor }
     sensors.push(newSensor)
     return newSensor
 }
@@ -33,5 +37,5 @@ export const remove = (id) => {
 // id: int,
 // type: str,
 // assignedTo: str,
-// lastSeen
 // }
+

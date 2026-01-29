@@ -24,8 +24,13 @@ client.on("message", (topic, message) => {
         tempMeasurements.push(tempData)
         if (tempMeasurements.length > 100) tempMeasurements.shift()
 
-        if (tempData.value > 30) createOverheatAlert()
-
+        if (tempData.value > 30) {
+            const newAlert = createOverheatAlert(tempData)
+            broadcast({ 
+                type: "alert.new",
+                payload: newAlert
+            })
+        }
         broadcast(tempData)
     }
     

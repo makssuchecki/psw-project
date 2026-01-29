@@ -1,6 +1,6 @@
 import crypto from "crypto";
-const alerts = []
 
+const alerts = []
 
 export const getAll = () => alerts
 
@@ -31,6 +31,7 @@ export const remove = (id) => {
     return true
 }
 
+export const clearAll = () => alerts.length = 0
 // alerts{
 // id: int,
 // type: str,

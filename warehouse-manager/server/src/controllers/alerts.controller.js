@@ -23,7 +23,11 @@ export const update = (req, res) => {
 }
 
 export const remove = (req, res) => {
-    const alert = service.remove(Number(req.params.id))
+    const ok = service.remove(Number(req.params.id))
     if (!ok) return res.sendStatus(404)
-    res.sendStatus(404)
+    res.sendStatus(204)
+}
+export const clearAll = (req, res) => {
+    service.clearAll()
+    res.sendStatus(204)
 }

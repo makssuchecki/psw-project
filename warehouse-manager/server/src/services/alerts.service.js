@@ -29,6 +29,8 @@ export const createOverheatAlert = () => {
         createAt: new Date()
     }
     create(alert)
+    return alert
 }
 
 
+export const clearAll = () => model.clearAll()

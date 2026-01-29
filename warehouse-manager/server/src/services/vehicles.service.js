@@ -1,13 +1,24 @@
 import * as model from "../models/vehicles.model.js"
 import client from "../mqtt/client.js"
 
-
+let broadcast = () => {}
+export const setBroadcast = (fn) => {
+    broadcast = typeof fn === "function" ? fn : () => {};
+}
 client.on("message", (topic, message) => {
     const data = JSON.parse(message.toString())
 
     if (topic === "vehicles/location"){
         const { longitude, latitude, vehicleId } = data
         update(vehicleId, {lastgps: [longitude, latitude]})
+
+        broadcast({
+            type: "vehicle.move",
+            payload: {
+                vehicleId,
+                lastgps: [longitude, latitude]
+            }
+        })
     }
 })
 

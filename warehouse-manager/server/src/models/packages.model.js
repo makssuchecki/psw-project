@@ -1,8 +1,8 @@
 import crypto from "crypto";
 
 const packages = [
-    { "id": 1, "code": "paczka1", "vehicleId": "a-1", "status": "in_transit", "targetTempRange": "0-30"},
-    { "id": 2, "code": "paczka2", "vehicleId": "a-1", "status": "delivered", "targetTempRange": "0-30"}
+    { "id": 1, "code": "paczka1", "vehicleId": "vehicle-1", "status": "in_transit"},
+    { "id": 2, "code": "paczka2", "vehicleId": "vehicle-1", "status": "delivered"}
 ]
 
 export const getAll = () => packages
@@ -39,5 +39,4 @@ export const remove = (id) => {
 // code: str
 // vehicleId: str	
 // status: str
-// targetTempRange: str
 // }
