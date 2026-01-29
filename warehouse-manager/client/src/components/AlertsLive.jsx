@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useWebSocket } from "../hooks/useWebSocket";
+import CreateAlert from "./CreateAlert";
 
 export default function AlertsLive({ api }) {
     const { lastMsg } = useWebSocket("ws://localhost:3000")
@@ -30,9 +31,10 @@ export default function AlertsLive({ api }) {
                 <div key={alert.id}>
                     <h4>{alert.type}</h4>
                     <p>{alert.message}</p>
-                    <p>{alert.createAt}</p>
+                    <p>{alert.createdAt}</p>
                 </div>
             ))}
+            <CreateAlert />
         </div>
     )
 }

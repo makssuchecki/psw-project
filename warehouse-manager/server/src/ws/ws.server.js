@@ -1,22 +1,10 @@
 import { WebSocketServer, WebSocket } from "ws";
+import { handleMessage } from "./ws.handlers.js";
 
 export function createWsServer(httpServer){
     const wss = new WebSocketServer({ server: httpServer });
 
     const clients = new Set()
-
-    wss.on("connection", (ws) => {
-        clients.add(ws);
-
-
-        ws.on("message", (raw) => {
-            try{
-                const msg = JSON.parse(raw.toString())
-            }catch {}
-        });
-
-        ws.on("close", () => clients.delete(ws));
-    })
 
     const broadcast = (payload) => {
         const data = JSON.stringify(payload);  
@@ -26,5 +14,21 @@ export function createWsServer(httpServer){
             }
         }
     };
+
+    wss.on("connection", (ws) => {
+        clients.add(ws);
+
+
+        ws.on("message", (raw) => {
+            try{
+                const msg = JSON.parse(raw.toString())
+                handleMessage(msg, { broadcast })
+            }catch {}
+        });
+
+        ws.on("close", () => clients.delete(ws));
+    })
+
+
     return { wss, broadcast };
 }   

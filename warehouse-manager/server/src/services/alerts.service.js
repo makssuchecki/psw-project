@@ -26,11 +26,21 @@ export const createOverheatAlert = () => {
         type: "overheat",
         severity: "high",
         message: "temperature over 30",
-        createAt: new Date()
+        createdAt: new Date()
     }
     create(alert)
     return alert
 }
 
-
+export const createCustomAlert = (message, severity) =>{ 
+    const alert = {
+        id: crypto.randomUUID(),
+        type: "manual",
+        severity,
+        message,
+        createdAt: new Date()
+    }
+    create(alert)
+    return alert
+}
 export const clearAll = () => model.clearAll()
