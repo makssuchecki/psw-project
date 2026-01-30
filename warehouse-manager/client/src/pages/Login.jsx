@@ -4,13 +4,14 @@ export default function Login({ setToken, api }){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
-
+    
     const login = async(e) => {
         e.preventDefault()
 
         const res = await fetch (`${api}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ username, password })
         })
 
@@ -19,8 +20,7 @@ export default function Login({ setToken, api }){
             return
         }
 
-        const data = await res.json()
-        setToken(data.token)
+        setToken(true)
     }
     return (
         <form onSubmit={login}>

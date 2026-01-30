@@ -1,22 +1,40 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 
-const API = "http://localhost:3000"
+const API = "https://localhost:3000"
 
 export default function App() {
     const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const res = await fetch(`${API}/auth/logged`, {
+                    credentials: "include"
+                });
+                if (res.ok){
+                    setToken(true);
+                }else{
+                    setToken(null);
+                }
+            }catch {
+                setToken(null);
+            }
+        };
+        checkAuth();
+    }, [])
 
     const logout = async () => {
         try{
             await fetch(`${API}/auth/logout`, {
             method: "POST",
-            headers: { Authorization: token }
+            credentials: "include"
         })}catch(e){}
 
-        setToken(null)
+        setToken(false)
     }
 
 

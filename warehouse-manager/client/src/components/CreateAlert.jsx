@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 export default function CreateAlert(){
-    const { send, connected } = useWebSocket("ws://localhost:3000")
+    const { send, connected } = useWebSocket("wss://localhost:3000")
     const [message, setMessage] = useState("")
     const [severity, setSeverity] = useState("medium")
 
@@ -14,7 +14,9 @@ export default function CreateAlert(){
             type: "alert.create",
             message, 
             severity
-        })    
+        })
+        setMessage("")
+        setSeverity("medium")
     }
 
     return (

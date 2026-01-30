@@ -1,7 +1,7 @@
 import { useWebSocket } from "../hooks/useWebSocket";
 
 export default function SensorsLive() {
-    const { connected, lastMsg } = useWebSocket("ws://localhost:3000")
+    const { connected, lastMsg } = useWebSocket("wss://localhost:3000")
 
     return (
         <div>

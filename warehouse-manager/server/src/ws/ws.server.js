@@ -2,7 +2,7 @@ import { WebSocketServer, WebSocket } from "ws";
 import { handleMessage } from "./ws.handlers.js";
 
 export function createWsServer(httpServer){
-    const wss = new WebSocketServer({ server: httpServer });
+    const wsServer = new WebSocketServer({ server: httpServer });
 
     const clients = new Set()
 
@@ -15,7 +15,7 @@ export function createWsServer(httpServer){
         }
     };
 
-    wss.on("connection", (ws) => {
+    wsServer.on("connection", (ws) => {
         clients.add(ws);
 
 
@@ -30,5 +30,5 @@ export function createWsServer(httpServer){
     })
 
 
-    return { wss, broadcast };
+    return { wsServer, broadcast };
 }   

@@ -3,7 +3,7 @@ import { useWebSocket } from "../hooks/useWebSocket";
 import CreateAlert from "./CreateAlert";
 
 export default function AlertsLive({ api }) {
-    const { lastMsg } = useWebSocket("ws://localhost:3000")
+    const { lastMsg } = useWebSocket("wss://localhost:3000")
     const [alerts, setAlerts] = useState([]);
 
     useEffect(() => {
@@ -16,7 +16,8 @@ export default function AlertsLive({ api }) {
     const clearAlerts = async () => {
         try{
             await fetch(`${api}/alerts`, {
-                method: "DELETE"
+                method: "DELETE",
+                credentials: "include"
                 }
             )
             setAlerts([])

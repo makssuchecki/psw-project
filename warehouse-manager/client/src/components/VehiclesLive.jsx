@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { useWebSocket } from "../hooks/useWebSocket";
 
 export default function VehiclesLive() {
-    const { lastMsg } = useWebSocket("ws://localhost:3000")
+    const { lastMsg } = useWebSocket("wss://localhost:3000")
     const [vehicles, setVehicles] = useState({})
 
     useEffect(() =>{

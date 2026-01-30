@@ -18,5 +18,6 @@ export const logout = (token) => {
 }
 
 export const isAuthenticated = (token) => {
-    return sessions.has(token)
+    return token && sessions.has(token)
 }
+
