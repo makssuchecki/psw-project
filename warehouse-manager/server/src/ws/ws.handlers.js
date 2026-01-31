@@ -17,11 +17,3 @@ const handleCreateAlert = (data, broadcast) => {
 
 
 
-
-// alerts{
-// id: int,
-// type: str,
-// severity: str,
-// message: str,
-// createdAt: str
-// }

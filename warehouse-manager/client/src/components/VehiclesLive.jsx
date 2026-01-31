@@ -1,9 +1,27 @@
-import { useState,useEffect } from "react";
-import { useWebSocket } from "../hooks/useWebSocket";
+import { useState,useEffect, useRef, useSyncExternalStore } from "react";
 
 export default function VehiclesLive() {
-    const { lastMsg } = useWebSocket("wss://localhost:3000")
+    const [connected, setConnected] = useState(null);
+    const [lastMsg, setLastMsg] = useState(null);
+    const wsRef = useRef(null);
     const [vehicles, setVehicles] = useState({})
+
+    useEffect(() => {
+        const ws = new WebSocket("wss://localhost:3000")
+        wsRef.current = ws;
+
+        ws.onopen = () => setConnected(true)
+        ws.onclose = () => setConnected(false)
+        ws.onmessage = (e) => {
+            try{
+                setLastMsg(JSON.parse(e.data))    
+            }
+            catch{
+                setLastMsg(e.data)
+            }
+        }
+        return () => ws.close()
+    }, [])
 
     useEffect(() =>{
         if (!lastMsg) return

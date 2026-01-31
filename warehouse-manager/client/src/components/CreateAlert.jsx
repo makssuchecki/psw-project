@@ -1,13 +1,31 @@
-import { useWebSocket } from "../hooks/useWebSocket"
-import { useState } from "react";
-
-
+import { useState, useRef, useEffect } from "react";
 
 export default function CreateAlert(){
-    const { send, connected } = useWebSocket("wss://localhost:3000")
+    const wsRef = useRef(null);
+    const [connected, setConnected] = useState(null);
     const [message, setMessage] = useState("")
     const [severity, setSeverity] = useState("medium")
 
+    useEffect(() => {
+        const ws = new WebSocket("wss://localhost:3000")
+        wsRef.current = ws
+
+        ws.onopen = () => setConnected(true)
+        ws.onmessage = (e) => {} 
+        ws.onclose = () => setConnected(false)
+
+        return () => ws.close()
+    }, [])
+
+    const send = (obj) => {
+        const wsCurr = wsRef.current
+        if (!wsCurr) return;
+        
+        if (wsCurr.readyState === WebSocket.OPEN){
+            ws.send(JSON.stringify(obj))
+        }
+        return
+    }
     const sendAlert = (message, severity) => {
         if (!message.trim()) return;
         send({
