@@ -22,7 +22,7 @@ export default function CreateAlert(){
         if (!wsCurr) return;
         
         if (wsCurr.readyState === WebSocket.OPEN){
-            ws.send(JSON.stringify(obj))
+            wsCurr.send(JSON.stringify(obj))
         }
         return
     }

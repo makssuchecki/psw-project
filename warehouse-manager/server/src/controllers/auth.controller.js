@@ -1,9 +1,9 @@
 import * as service from "../services/auth.service.js"
 
-export const login = (req, res) => {
+export const login = async (req, res) => {
     const { username, password } = req.body
 
-    const token = service.login(username, password)
+    const token = await service.login(username, password)
 
     if (!token) return res.sendStatus(401).json({ error: "Invalid credentials" });
 
