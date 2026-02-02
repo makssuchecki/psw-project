@@ -1,0 +1,35 @@
+.mainDiv{
+    background-color: rgb(54, 54, 54);
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.logoutBtn{
+    font-family: "TASA Explorer";
+    background-color: transparent;
+    color:whitesmoke;
+    border: 1px solid whitesmoke;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 1em;
+    width: 80%;
+}
+
+.logoutBtn:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+.adminPanel{
+    font-family: "TASA Explorer";
+    width: 70%;
+    margin-top:20px;
+    color:whitesmoke;
+    background-color:rgb(92, 92, 92) ;
+    padding: 10px 10px;
+    border: 1px solid whitesmoke;
+    border-radius: 15px;
+    
+}

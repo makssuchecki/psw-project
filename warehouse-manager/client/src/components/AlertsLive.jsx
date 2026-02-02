@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import CreateAlert from "./CreateAlert";
+import styles from "./AlertsLive.module.css"
 
 export default function AlertsLive({ api }) {
     const wsRef = useRef(null);
@@ -43,17 +44,19 @@ export default function AlertsLive({ api }) {
 
     }
     return (
-        <div>
-            <h2>Ostrzeżenia</h2>
-            <button onClick={clearAlerts}>Oznacz jako przeczytane</button>
-            {alerts.map(alert => (
-                <div key={alert.id}>
-                    <h4>{alert.type}</h4>
-                    <p>{alert.message}</p>
-                    <p>{alert.createdAt}</p>
-                </div>
-            ))}
+        <div className={styles.mainDiv}>
+            <p className={styles.mainTitle}>Ostrzeżenia</p>
+            <button className={styles.clearBtn} onClick={clearAlerts}>Oznacz jako przeczytane</button>
             <CreateAlert />
+            <div className={styles.alertGrid}>
+                {alerts.map(alert => (
+                    <div className={`${styles.alertDiv} ${styles[alert.severity]}`} key={alert.id}>
+                        <h4>{alert.type}</h4>
+                        <p>{alert.message}</p>
+                        <p>{alert.createdAt}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

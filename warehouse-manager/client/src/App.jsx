@@ -50,7 +50,7 @@ export default function App() {
                     path="/dashboard"
                     element={
                         <ProtectedRoute token={token}>
-                            <Dashboard token={token} logout={logout} api={API}/>        
+                            <Dashboard logout={logout} api={API}/>        
                         </ProtectedRoute>
                     }
                 />

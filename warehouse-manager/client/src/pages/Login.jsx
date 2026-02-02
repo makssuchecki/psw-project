@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "./Login.module.css" 
 
 export default function Login({ setToken, api }){
     const [username, setUsername] = useState("")
@@ -23,11 +24,18 @@ export default function Login({ setToken, api }){
         setToken(true)
     }
     return (
-        <form onSubmit={login}>
-            <input placeholder="username" onChange={e => setUsername(e.target.value)}/>
-            <input placeholder="password" type="password" onChange={e => setPassword(e.target.value)}/>
-            {error && (<p>{error}</p>)}
-            <button type="submit">Login</button>
-        </form>
+        <div className={styles.wrapDiv}>
+            <div className={styles.contentDiv}>
+                <h2 className={styles.mainTitle}>Warehouse Manager</h2>
+                <p>Zaloguj się</p>
+                <form onSubmit={login} className={styles.mainForm}>
+                    <input className={styles.userInput} placeholder="username" onChange={e => setUsername(e.target.value)}/>
+                    <input className={styles.passwordInput} placeholder="password" type="password" onChange={e => setPassword(e.target.value)}/>
+                    <button className={styles.loginBtn}type="submit">Login</button>
+                    {error && (<p className={styles.loginError}>{error}</p>)}
+                </form>
+            </div>
+        </div>
+
     )
 }

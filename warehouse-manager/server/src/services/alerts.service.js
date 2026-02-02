@@ -23,10 +23,10 @@ export const remove = (id) => model.remove(id)
 export const createOverheatAlert = () => {
     const alert = {
         id: crypto.randomUUID(),
-        type: "overheat",
+        type: "Overheat",
         severity: "high",
         message: "temperature over 30",
-        createdAt: new Date()
+        createdAt: new Date().toLocaleTimeString()
     }
     create(alert)
     return alert
@@ -35,10 +35,10 @@ export const createOverheatAlert = () => {
 export const createCustomAlert = (message, severity) =>{ 
     const alert = {
         id: crypto.randomUUID(),
-        type: "manual",
+        type: "Alert",
         severity,
         message,
-        createdAt: new Date()
+        createdAt: new Date().toLocaleTimeString()
     }
     create(alert)
     return alert

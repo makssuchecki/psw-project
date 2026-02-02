@@ -1,0 +1,60 @@
+.msgInput{
+    color:whitesmoke;
+    background-color: gray;
+    padding:5px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.sevLabel{
+    color: whitesmoke;
+}
+
+.mainDiv{
+    margin-top: 5px;
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sendBtn{
+    color: whitesmoke;
+    background-color: transparent;
+    padding: 4px 15px;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.sendBtn:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+.sevSelect{
+    color: whitesmoke;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 0px;
+}
+.sevOpt{
+    background-color: gray;
+}
+.sevSelect:hover{
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.sevDiv{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    background-color: transparent;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 0px;
+    margin-top: 5px;
+    border: 1px solid whitesmoke;
+}

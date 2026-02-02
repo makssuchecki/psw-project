@@ -1,4 +1,5 @@
-import { useState,useEffect, useRef, useSyncExternalStore } from "react";
+import { useState,useEffect, useRef } from "react";
+import styles from "./VehiclesLive.module.css"
 
 export default function VehiclesLive() {
     const [connected, setConnected] = useState(null);
@@ -35,16 +36,21 @@ export default function VehiclesLive() {
     }, [lastMsg])
 
     return (
-        <div>
-            <h2>Aktywne Pojazdy</h2>
+        <div className={styles.mainDiv}>
+            <p className={styles.mainTitle}>Aktywne Pojazdy</p>
+            {Object.keys(vehicles).length === 0 && (<p className={styles.noActive}>Brak aktywnych pojazdów</p>)}
+            <div className={styles.vehicleGrid}>
+                {Object.entries(vehicles).map(([id, v]) =>(
+                    <div className={styles.vehicleDiv} key={id}>
+                        <p>ID: {id}</p> 
+                        <p>GPS:</p>
+                        <p>{v.lastgps[0].toFixed(4)} </p> 
+                        <p>{v.lastgps[1].toFixed(4)}</p>
+                    </div>
+                ))
+                }
+            </div>
 
-            {Object.entries(vehicles).map(([id, v]) =>(
-                <div key={id}>
-                    <p>ID: {id}</p> 
-                    <p>GPS: {v.lastgps[0]} {v.lastgps[1]}</p> 
-                </div>
-            ))
-            }
         </div>
     )
 }

@@ -39,7 +39,7 @@ client.on("message", (topic, message) => {
             type: "sensor.humidity",
             value: data.value,
             unit: "%",
-            timestamp: new Date()
+            timestamp: new Date().toLocaleTimeString()
         }
         humidityMeasurements.push(humData)
         

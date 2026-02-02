@@ -1,0 +1,48 @@
+.mainDiv{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 50px;
+    width: 100%;
+    gap: 50px;
+    min-height: 100vh;
+}
+
+.navBar{
+    padding: 30px 20px;
+    display: flex;
+    background-color: rgb(46, 46, 46);
+    gap: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mainTitle{
+    font-family: "TASA Explorer";
+    color:whitesmoke;
+    border: 1px solid whitesmoke;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 1.4em;
+}
+
+.dashDiv{
+    display:flex;
+    justify-content: center;
+}
+
+
+.vehiclesLive{
+    grid-column:3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.alertsLive{
+    grid-column: 1 / 3;
+    grid-row: 2;
+}
+
+.sideMain{
+    display:grid;
+    grid-template-columns: 1fr 10fr;
+}

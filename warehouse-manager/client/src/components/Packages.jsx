@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./Packages.module.css";
 
 export default function Packages({ api }) {
     const [packagesData, setPackagesData] = useState([])
@@ -22,16 +23,17 @@ export default function Packages({ api }) {
         setPackagesData(prev => prev.filter(p => p.id !== id))
     }
     return (
-        <div>
-            <h2>Panel przesyłek</h2>
-            <label>Wyszukaj</label>
-            <input onChange={(e) => setInput(e.target.value)} placeholder="Nazwa przesyłki"/>
-            {Array.isArray(packagesData) && packagesData.map(p => (
-                <div key={p.id}>
-                    <p>{p.id} - {p.code} - {p.status}</p>
-                    {p.status === "delivered" && (<button onClick={() => deleteDelivered(p.id)}>Usuń</button>)} 
-                </div>
-            ))}
+        <div className={styles.mainDiv}>
+            <p className={styles.mainTitle}>Panel przesyłek</p>
+            <input className={styles.inputPackage} onChange={(e) => setInput(e.target.value)} placeholder="Nazwa przesyłki"/>
+            <div className={styles.packageGrid}>
+                {Array.isArray(packagesData) && packagesData.map(p => (
+                    <div className={styles.packageDiv} key={p.id}>
+                        <p>{p.id} - {p.code} - {p.status}</p>
+                        {p.status === "delivered" && (<button className={styles.deleteBtn} onClick={() => deleteDelivered(p.id)}>Usuń</button>)} 
+                    </div>
+                ))}
+            </div>
             { packagesData.length === 0 && (<p>Brak aktywnych przesyłek</p>)}  
         </div>
     )

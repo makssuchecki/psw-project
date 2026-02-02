@@ -1,0 +1,69 @@
+.mainForm{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.wrapDiv{
+    padding:100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userInput{
+    color:whitesmoke;
+    background-color: rgb(83, 83, 83);
+    padding: 10px 5px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+
+.passwordInput{
+    color:whitesmoke;
+    background-color: rgb(83, 83, 83);
+    padding:10px 5px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+.loginBtn{
+    background-color: rgb(44, 44, 44);
+    color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding:10px;
+}
+
+.loginBtn:hover{
+    cursor: pointer;
+    background-color: rgb(66, 66, 66);
+}
+
+.contentDiv{
+    color: whitesmoke;
+    font-family: "TASA Explorer";
+    font-size: 1.2em;
+    padding: 5% 10%;    
+    background-color: rgb(56, 56, 56);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    gap: 20px;
+}
+
+.loginError{
+    color:whitesmoke;
+    margin-top: 10px;
+    
+}
+
+
+.mainTitle{
+    padding:10px 20px;
+    border: 1px solid whitesmoke;
+    border-radius: 20px;
+}

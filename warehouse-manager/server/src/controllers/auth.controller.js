@@ -5,8 +5,9 @@ export const login = async (req, res) => {
 
     const token = await service.login(username, password)
 
-    if (!token) return res.sendStatus(401).json({ error: "Invalid credentials" });
-
+    if (!token){
+        return res.sendStatus(401)
+    }
     res.cookie("token", token, {
         httpOnly: true,
         secure: true,
