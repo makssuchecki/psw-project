@@ -35,11 +35,21 @@ export default function SensorsLive() {
             <p className={styles.statusText}>Status: {connected ? "connected" : "disconnected"}</p>
             <div className={styles.sensorsGrid}>
                 {temperature?.type === "sensor.temperature" && (
-                    <p className={styles.tempText}>Temperatura: {temperature.value}°{temperature.unit}</p>
+                    <div className={styles.senTemp}>
+                        <p>Temperatura</p>
+                        <div className={styles.circleTemp}>
+                            <p className={styles.tempText}>{temperature.value}°{temperature.unit}</p>
+                        </div>
+                    </div>
                 )}
 
                 {humidity?.type === "sensor.humidity" && (
-                    <p className={styles.humText}>Wilgotność: {humidity.value} {humidity.unit}</p>
+                    <div className={styles.senTemp}>
+                        <p>Wilgotność</p>
+                        <div className={styles.circleTemp}>
+                            <p className={styles.tempText}>{humidity.value}°{humidity.unit}</p>
+                        </div>
+                    </div>
                 )}
             </div>
         </div>

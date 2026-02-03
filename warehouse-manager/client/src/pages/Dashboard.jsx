@@ -11,7 +11,7 @@ export default function Dashboard({ logout, api}){
     return (
         <>  
             <div className={styles.navBar}>
-                <p className={styles.mainTitle}>Warehouse   Manager</p>
+                <p className={styles.mainTitle}>Warehouse Manager</p>
             </div>
             <div className={styles.sideMain}>
                 <Sidebar logout={logout} />

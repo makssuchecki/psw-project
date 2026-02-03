@@ -28,13 +28,15 @@ export default function Packages({ api }) {
             <input className={styles.inputPackage} onChange={(e) => setInput(e.target.value)} placeholder="Nazwa przesyłki"/>
             <div className={styles.packageGrid}>
                 {Array.isArray(packagesData) && packagesData.map(p => (
-                    <div className={styles.packageDiv} key={p.id}>
-                        <p>{p.id} - {p.code} - {p.status}</p>
+                    <div className={`${styles.packageDiv} ${styles[p.status]}`} key={p.id}>
+                        <p>{p.id}</p>
+                        <p>{p.code}</p>
+                        {p.status === "delivered" ? (<p>Dostarczona</p>) : (<p>W transporcie</p>)}
                         {p.status === "delivered" && (<button className={styles.deleteBtn} onClick={() => deleteDelivered(p.id)}>Usuń</button>)} 
                     </div>
                 ))}
             </div>
-            { packagesData.length === 0 && (<p>Brak aktywnych przesyłek</p>)}  
+            { packagesData.length === 0 && (<p className={styles.noPacks}>Brak aktywnych przesyłek</p>)}  
         </div>
     )
 }

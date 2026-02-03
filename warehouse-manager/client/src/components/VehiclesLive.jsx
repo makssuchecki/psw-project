@@ -44,8 +44,10 @@ export default function VehiclesLive() {
                     <div className={styles.vehicleDiv} key={id}>
                         <p>ID: {id}</p> 
                         <p>GPS:</p>
-                        <p>{v.lastgps[0].toFixed(4)} </p> 
-                        <p>{v.lastgps[1].toFixed(4)}</p>
+                        <div className={styles.gpsCircle}>
+                            <p>{v.lastgps[0].toFixed(4)} </p> 
+                            <p>{v.lastgps[1].toFixed(4)}</p>
+                        </div>
                     </div>
                 ))
                 }

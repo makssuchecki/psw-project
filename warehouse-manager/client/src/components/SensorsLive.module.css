@@ -19,7 +19,6 @@
 }
 
 .tempText{
-    font-family: "TASA Explorer";
     color: whitesmoke;
 }
 .humText{
@@ -30,5 +29,33 @@
 .sensorsGrid{
     display:grid;
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 10px;
+    height: 60%;
+    gap: 30px
 }
 
+.senTemp{
+    margin-top: 5px;
+    font-family: "TASA Explorer";
+    color: whitesmoke;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid whitesmoke;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.circleTemp{
+    display: flex;
+    padding: 30px;
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(255, 255, 255);
+    font-size: 1.5em;
+}

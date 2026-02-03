@@ -27,13 +27,16 @@
 }
 
 .packageDiv{
-    border: 1px solid black;
-    background-color: gray;
+    font-family: "TASA Explorer";
+    border: 1px solid whitesmoke;
+    background-color: transparent;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-direction: column;
+    color: whitesmoke;
 }
 
 .packageGrid{
@@ -44,14 +47,23 @@
 }
 
 .deleteBtn{
-    color: black;
+    color: whitesmoke;
     background-color: transparent;
     padding: 5px 15px;
-    border: 1px solid black;
+    border: 1px solid whitesmoke;
     border-radius: 10px;
     margin-top: 5px;
 }
 .deleteBtn:hover{
     background-color: rgb(209, 209, 209);
     cursor: pointer
+}
+
+.delivered{
+    opacity: 0.5;
+}
+
+.noPacks{
+    font-family: "TASA Explorer";
+    color: whitesmoke;
 }

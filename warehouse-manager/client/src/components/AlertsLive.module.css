@@ -21,10 +21,12 @@
 }
 
 .alertDiv{
-    border: 1px solid black;
-    background-color: gray;
+    color: whitesmoke;
+    font-family: "TASA Explorer";
+    border: 1px solid whitesmoke;
+    background-color: transparent;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
