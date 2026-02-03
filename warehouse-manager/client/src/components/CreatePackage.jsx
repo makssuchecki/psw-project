@@ -36,7 +36,6 @@ export default function CreatePackage({ api, setPackagesData }) {
 
     return (
         <div className={styles.mainDiv}>
-            <p>Dodaj paczkę</p>
             <form onSubmit={createPack}>
                 <input 
                     className={styles.packName}
@@ -58,7 +57,7 @@ export default function CreatePackage({ api, setPackagesData }) {
                         </option>
                     ))}
                 </select>
-                <button disabled={!vehicleId || !code} className={styles.submitBtn} type="submit">Dodaj</button>
+                <button disabled={!vehicleId || !code} className={styles.submitBtn} type="submit">Dodaj paczkę</button>
             </form>
         </div>
     );

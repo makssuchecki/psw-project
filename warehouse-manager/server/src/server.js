@@ -10,8 +10,8 @@ import https from "https";
 import fs from "fs";
 
 const options = {
-    key: fs.readFileSync("./certs/plik_klucz"), 
-    cert: fs.readFileSync("./certs/plik_certyfikat")
+    key: fs.readFileSync("./certs/localhost+2-key.pem"), 
+    cert: fs.readFileSync("./certs/localhost+2.pem")
 }
 
 const server = https.createServer(options, app);
