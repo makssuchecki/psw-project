@@ -41,7 +41,7 @@ export default function CreateAlert(){
         <div className={styles.mainDiv}>
             <input className={styles.msgInput} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Wiadomość ostrzeżenia"></input>
             <div className={styles.sevDiv}>
-                <label className={styles.sevLabel} htmlFor="severity">Wybierz powagę:</label>
+                <label className={styles.sevLabel}>Wybierz powagę:</label>
                 <select className={styles.sevSelect} value={severity} name="severity" onChange={(e) => setSeverity(e.target.value)}>
                     <option className={styles.sevOpt} value="high">Wysoka</option>
                     <option className={styles.sevOpt} value="medium">Średnia</option>
