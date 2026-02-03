@@ -1,0 +1,35 @@
+.gridDiv{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+
+.hideBtn{
+    font-family: "TASA Explorer";
+    color: whitesmoke;
+    background-color: transparent;
+    padding: 5px 15px;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+.hideBtn:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+
+.vehicleDiv{
+    opacity: 0.5;
+    color: whitesmoke;
+    font-family: "TASA Explorer";
+    background-color: transparent;
+    border: 1px solid whitesmoke;
+    padding: 10px;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

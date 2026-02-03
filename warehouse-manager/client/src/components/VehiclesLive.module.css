@@ -31,7 +31,6 @@
 .noActive{
     font-family: "TASA Explorer";
     color: whitesmoke;
-    opacity: 0.8;
     margin-top:5px;
 }
 .vehicleGrid{
@@ -53,4 +52,18 @@
     min-width: 70px;
     border-radius: 100px;
 
+}
+
+.showBtn{
+    font-family: "TASA Explorer";
+    color: whitesmoke;
+    background-color: transparent;
+    padding: 5px 15px;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+.showBtn:hover{
+    background-color: gray;
+    cursor: pointer;
 }

@@ -1,12 +1,13 @@
 import { useState,useEffect, useRef } from "react";
-import styles from "./VehiclesLive.module.css"
+import styles from "./VehiclesLive.module.css";
+import AllVehicles from "./allVehicles";
 
-export default function VehiclesLive() {
+export default function VehiclesLive({api}) {
     const [connected, setConnected] = useState(null);
     const [lastMsg, setLastMsg] = useState(null);
     const wsRef = useRef(null);
     const [vehicles, setVehicles] = useState({})
-
+    const [allShown, setAllShown] = useState(false)
     useEffect(() => {
         const ws = new WebSocket("wss://localhost:3000")
         wsRef.current = ws;
@@ -52,7 +53,9 @@ export default function VehiclesLive() {
                 ))
                 }
             </div>
-
+            {!allShown 
+                ?  <button className={styles.showBtn} onClick={() => setAllShown(!allShown)}>Pokaż wszystkie</button> 
+                : <AllVehicles api={api} setAllShown={setAllShown} />}
         </div>
     )
 }

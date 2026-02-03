@@ -1,0 +1,55 @@
+.mainDiv{
+    font-family: "TASA Explorer";
+    display:flex;
+    padding:10px;
+    border-radius: 15px;
+    justify-content: space-around;
+    color: whitesmoke;
+    border:1px solid whitesmoke;
+    align-items: center;
+    margin: 5px 0px;
+}
+
+.packName{
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 5px 5px;
+    color: whitesmoke;
+}
+
+.vehicleSelect{
+    font-family: "TASA Explorer";
+    color: whitesmoke;
+    background-color: transparent;
+    margin: 0px 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border:1px solid whitesmoke;
+
+}
+
+.vehicleSelect:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+.optVehicle{
+    background-color: gray;
+}
+.submitBtn{
+    color:whitesmoke;
+    font-family: "TASA Explorer";
+    border: 1px solid whitesmoke;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.submitBtn:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+.submitBtn:disabled{
+    opacity: 0.5;
+}

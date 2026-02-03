@@ -20,7 +20,7 @@ export default function Dashboard({ logout, api}){
                         <Packages api={api} />
                         <SensorsLive />
                         <div className={styles.vehiclesLive}>
-                            <VehiclesLive />
+                            <VehiclesLive api={api}/>
                         </div>
                         <div className={styles.alertsLive}>
                             <AlertsLive api={api} />

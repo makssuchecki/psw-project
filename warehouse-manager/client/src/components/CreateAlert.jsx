@@ -48,7 +48,7 @@ export default function CreateAlert(){
                     <option className={styles.sevOpt} value="low">Niska</option>
                 </select>
             </div>
-            <button className={styles.sendBtn} disabled={!connected} onClick={() => sendAlert(message, severity)}>Dodaj ostrzeżenie</button>
+            <button className={styles.sendBtn} disabled={!message || !connected} onClick={() => sendAlert(message, severity)}>Dodaj ostrzeżenie</button>
         </div>
 
     )
