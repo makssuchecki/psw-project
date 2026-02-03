@@ -29,6 +29,9 @@ WebSocket - transmisja danych w czasie rzeczywistym:
 - ruch pojazdów,
 
 Poza tym został utworzony i wykorzystany certyfikat TLS,
+
 Z protokołów backendowych można korzystać po stronie klienckiej,
+
 Hasło jest haszowane przy użyciu bcrypt,
+
 Wykorzystano pliki cookie
