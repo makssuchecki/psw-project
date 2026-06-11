@@ -1,5 +1,4 @@
-# Warehouse Manager (Protokoły sieci Web)
-Maksymilian Suchecki
+# Warehouse Manager
 
 ## Opis projektu
 Aplikacja wspiera zarządce magazynu firmy kurierskiej.
